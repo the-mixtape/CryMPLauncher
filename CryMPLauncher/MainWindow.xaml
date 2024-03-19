@@ -1,0 +1,75 @@
+﻿<Window x:Class="CryMPLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryMPLauncher"
+        mc:Ignorable="d"
+        Title="CryMP Launcher" Height="480" Width="720"
+        WindowStyle="None" Background="#070a0a" MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" />
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <Style x:Key="TitleBarButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bdr_main"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              ContentSource="Content" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bdr_main"
+                                        Property="Background"
+                                        Value="#202020" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bdr_main" Property="Background" Value="#202020" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock FontFamily="{StaticResource CrysisFont}" 
+                           Foreground="White"
+                           FontSize="18" VerticalAlignment="Center"
+                           Margin="10,0,0,0">
+                    CryMP
+                </TextBlock>
+            </WrapPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonMinimize" Style="{StaticResource TitleBarButtonStyle}" Width="30"
+                        Background="Transparent" BorderBrush="Transparent" Click="ButtonMinimize_OnClick">
+                    <Image Source="/Resources/Images/minimize.png" Width="20" Height="20" />
+                </Button>
+                <Button x:Name="ButtonClose" Style="{StaticResource TitleBarButtonStyle}" Width="30"
+                        Background="Transparent" BorderBrush="Transparent" Click="ButtonClose_OnClick">
+                    <Image Source="/Resources/Images/close.png" Width="20" Height="20" />
+                </Button>
+
+                <!-- <Label FontFamily="{StaticResource CrysisFont}" FontSize="36"> -->
+                <!-- CRYSIS -->
+                <!-- </Label> -->
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock  FontFamily="{StaticResource CrysisFont}" 
+                        Foreground="White">CMP</TextBlock>
+        </Grid>
+    </Grid>
+</Window>
